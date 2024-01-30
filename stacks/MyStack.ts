@@ -9,6 +9,7 @@ export function API({ stack }: StackContext) {
 
   const site = new NextjsSite(stack, "site", {
     path: "packages/web",
+    
   });
   
   stack.addOutputs({
