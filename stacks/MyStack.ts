@@ -8,10 +8,10 @@ export function API({ stack }: StackContext) {
   });
 
   const site = new NextjsSite(stack, "site", {
+    customDomain: stack.stage !== "dev" ? "jesreel.dev" : undefined,
     path: "packages/web",
-    
   });
-  
+
   stack.addOutputs({
     SiteUrl: site.url,
   });

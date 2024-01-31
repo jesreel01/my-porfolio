@@ -26,6 +26,15 @@ export const metadata: Metadata = {
     "Software Engineer",
     "Software Engineer",
   ],
+  icons: {
+    icon: '/j.png',
+    // shortcut: '/shortcut-icon.png',
+    // apple: '/apple-icon.png',
+    // other: {
+    //   rel: 'apple-touch-icon-precomposed',
+    //   url: '/apple-touch-icon-precomposed.png',
+    // },
+  },
   authors: [
     { name: "Jesreel John Miole", url: "https://github.com/jesreel01" },
   ],
