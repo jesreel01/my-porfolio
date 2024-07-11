@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import localFont from "next/font/local";
+import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"] });
+const hubot = localFont({
+  src: "../public/fonts/HubotSans.woff2",
+  variable: "--font-hubot",
+  weight: "400 900",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,12 +23,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="[color-scheme:dark]">
-      <body className={inter.className}>
+      <body
+        className={cn(
+          "font-sans overscroll-y-none bg-gray-900 antialiased selection:bg-violet-600/90 selection:text-white",
+          hubot.variable
+        )}
+      >
+         <svg
+          className="pointer-events-none fixed isolate z-50 opacity-70 mix-blend-soft-light"
+          width="100%"
+          height="100%"
+        >
+          <filter id="noise">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.80"
+              numOctaves="4"
+              stitchTiles="stitch"
+            />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#noise)" />
+        </svg>
+
         <div className="layout-sm relative z-10 grid gap-y-8 px-4 pt-12 text-rose-200/90 xl:layout-xl xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3">
           <Header />
-          <main>
-            {children}
-          </main>
+          <main>{children}</main>
           <Footer />
         </div>
       </body>

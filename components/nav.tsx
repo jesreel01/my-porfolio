@@ -1,11 +1,37 @@
-import React from 'react'
+import Link from "next/link";
+import React from "react";
+
+const menu = [
+  {
+    href: "/",
+    label: "Home",
+  },
+  {
+    href: "/about",
+    label: "About",
+  },
+  {
+    href: "/projects",
+    label: "Projects",
+  },
+  {
+    href: "/blog",
+    label: "Blog",
+  },
+];
 
 const Nav = () => {
-    return (
-        <div>
-            NAV
-        </div>
-    )
-}
+  return (
+    <nav>
+      <ul className="flex space-x-4 sm:space-x-8 font-medium">
+        {menu.map((item, index) => (
+          <li key={index}>
+            <Link href={item.href}>{item.label}</Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};
 
-export default Nav
+export default Nav;
