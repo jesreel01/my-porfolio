@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="mt-6">
+    <div className="mt-6">
       <div className="flex items-center">
         <div className="mr-6">
           <ProfileImageLarge />
@@ -30,6 +30,6 @@ export default function Home() {
 
       <Projects />
       <FeaturedPosts />
-    </main>
+    </div>
   );
 }
