@@ -9,15 +9,17 @@ const Projects = () => {
       <h2 className="text-2xl font-medium tracking-wider">Projects</h2>
 
       <div className="flex mt-6 justify-between space-x-5">
+        {/* <ProjectPreviewCard />
         <ProjectPreviewCard />
-        <ProjectPreviewCard />
-        <ProjectPreviewCard />
+        <ProjectPreviewCard /> */}
+
+        <div className="py-10 text-center text-rose-100/60 w-full">
+          <p >No projects yet.</p>
+        </div>
       </div>
 
       <div className="mt-5 text-rose-100/80">
-        <Link href="/projects">
-          See all projects
-        </Link>
+        <Link href="/projects">See all projects</Link>
       </div>
     </section>
   );
