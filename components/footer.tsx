@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="mt-12 pb-24">
+    <footer className="mt-20 pb-24">
       <ul className="flex space-x-6 font-medium">
         <li>
           <Link href="https://www.linkedin.com/in/jesreel-john-miole-ba2ba0215/">LinkedIn</Link>
