@@ -29,7 +29,7 @@ export default function RootLayout({
           hubot.variable
         )}
       >
-         <svg
+        <svg
           className="pointer-events-none fixed isolate z-50 opacity-70 mix-blend-soft-light"
           width="100%"
           height="100%"
@@ -49,6 +49,10 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Footer />
+        </div>
+
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="h-full bg-[url('/bg_gradient.jpeg')] bg-top bg-no-repeat opacity-[0.3]" />
         </div>
       </body>
     </html>
