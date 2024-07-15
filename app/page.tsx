@@ -26,7 +26,6 @@ export default function Home() {
         tackling challenging projects that help me learn and grow.
       </p>
 
-      <div></div>
 
       <Projects />
       <FeaturedPosts />
