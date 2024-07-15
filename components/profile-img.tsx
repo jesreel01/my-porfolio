@@ -16,15 +16,17 @@ const ProfileImg = () => {
   );
 };
 
-export const ProfileImageLarge = () => {
+export const ProfileImageLarge = ({ height = 70 ,
+  width = 70
+}) => {
   return (
     <div className="rounded-full bg-gradient-to-tl from-purple-700/60 to-rose-400/60 p-1 shadow-lg ring-[5px] ring-purple-500/10">
       <Image
         src="/profile.png"
         alt="A photo of Jesreel"
         className="rounded-full"
-        width={70}
-        height={70}
+        width={width}
+        height={height}
       />
     </div>
   );
