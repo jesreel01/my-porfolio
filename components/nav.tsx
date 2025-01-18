@@ -5,18 +5,22 @@ const menu = [
   {
     href: "/",
     label: "Home",
+    disable: false,
   },
   {
     href: "/about",
     label: "About",
+    disable: false,
   },
   {
     href: "/projects",
     label: "Projects",
+    disable: true,
   },
   {
     href: "/blog",
     label: "Blog",
+    disable: true,
   },
 ];
 
