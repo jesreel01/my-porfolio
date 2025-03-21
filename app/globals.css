@@ -90,30 +90,15 @@
   .section {
     @apply py-16 md:py-24;
   }
-
+  
   .project-card {
     @apply relative overflow-hidden rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-md;
   }
-
+  
   .nav-link {
-    @apply relative text-muted-foreground transition-colors duration-200 hover:text-primary;
+    @apply relative text-muted-foreground transition-colors duration-200 hover:text-primary after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full;
   }
-
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 0.5rem;
-    width: 0;
-    background-color: var(--color-primary);
-    transition: width 0.3s;
-  }
-
-  .nav-link:hover::after {
-    width: 100%;
-  }
-
+  
   .cursor-line {
     @apply h-5 w-0.5 inline-block bg-primary align-middle mx-0.5 animate-cursor-blink;
   }

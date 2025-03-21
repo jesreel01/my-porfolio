@@ -66,7 +66,6 @@ const Navigation: React.FC = () => {
             ].map((item) => (
               <li
                 key={item.href}
-               
               >
                 <Link
                   href={item.href}

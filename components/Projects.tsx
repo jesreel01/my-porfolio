@@ -43,7 +43,7 @@ const projects: Project[] = [
 
 const Projects: React.FC = () => {
   return (
-    <section id="projects" className="section bg-secondary/30">
+    <section id="projects" className="bg-secondary/30">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
