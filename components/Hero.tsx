@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
             <span className="text-muted-foreground font-mono mb-3">Hello, my name is</span>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
               <span className="block ">Jesreel</span>
-              <span className="block text-primary/80">Full-Stack Developer</span>
+              <span className="block text-primary/80">Full Stack Developer</span>
             </h1>
 
             <div className="h-20 overflow-hidden font-mono text-lg text-muted-foreground mt-2 mb-8">
