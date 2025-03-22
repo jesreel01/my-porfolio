@@ -4,16 +4,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ExternalLinkIcon, GithubIcon, CodeIcon } from "lucide-react";
 
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  tags: string[];
-  demoUrl: string;
-  codeUrl: string;
-}
-
-const projects: Project[] = [
+// Using the same project data from Projects component
+const projects = [
   {
     id: 1,
     title: "E-commerce Platform",
@@ -41,20 +33,50 @@ const projects: Project[] = [
     demoUrl: "#",
     codeUrl: "#",
   },
+  {
+    id: 4,
+    title: "Task Management App",
+    description:
+      "A productivity application for organizing tasks, setting priorities, and tracking progress with collaborative features.",
+    tags: ["React", "Redux", "Firebase", "Material UI"],
+    demoUrl: "#",
+    codeUrl: "#",
+  },
+  {
+    id: 5,
+    title: "Social Media Dashboard",
+    description:
+      "An analytics dashboard for social media platforms, providing insights on audience engagement and content performance.",
+    tags: ["Vue.js", "D3.js", "Express", "MongoDB"],
+    demoUrl: "#",
+    codeUrl: "#",
+  },
+  {
+    id: 6,
+    title: "Recipe Finder",
+    description:
+      "A web application allowing users to search for recipes based on ingredients, dietary restrictions, and meal types.",
+    tags: ["React", "GraphQL", "Node.js", "Styled Components"],
+    demoUrl: "#",
+    codeUrl: "#",
+  },
 ];
 
-const Projects: React.FC = () => {
+const Projects = () => {
   return (
-    <section id="projects" className="bg-secondary/30">
+    <div className="pt-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="mb-12"
       >
-        <span className="text-primary/70 font-mono text-sm">Featured Work</span>
-        <h2 className="text-3xl md:text-4xl font-bold mt-2">Projects</h2>
+        <span className="text-primary/70 font-mono text-sm">My Work</span>
+        <h1 className="text-4xl md:text-5xl font-bold mt-2">Projects</h1>
+        <p className="text-muted-foreground mt-4 max-w-2xl">
+          A collection of my recent projects, showcasing my skills in web development, UI/UX design,
+          and problem-solving.
+        </p>
       </motion.div>
 
       <div className="grid gap-8">
@@ -110,25 +132,7 @@ const Projects: React.FC = () => {
           </motion.div>
         ))}
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="mt-12 text-center"
-      >
-        <a
-          href="https://github.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center font-mono text-sm text-primary hover:underline"
-        >
-          More projects on GitHub
-          <ExternalLinkIcon className="ml-1 h-3 w-3" />
-        </a>
-      </motion.div>
-    </section>
+    </div>
   );
 };
 
