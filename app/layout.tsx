@@ -29,8 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable}  ${jetbrainsMono.variable} antialiased bg-gray-50`}>
+    <html lang="en" >
+      <body className={`${inter.variable}  ${jetbrainsMono.variable} antialiased`}>
         <Cursor />
         <Navigation />
         <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8">{children}</main>

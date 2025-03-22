@@ -1,6 +1,7 @@
+"use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { CalendarIcon, ClockIcon, ArrowRightIcon } from "lucide-react";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "@/components/ui/pagination";
 import Link from "next/link";
@@ -55,14 +56,16 @@ const BLOG_POSTS = [
 ];
 
 const BlogPosts: React.FC = () => {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   return (
     <div className="space-y-16">
       {BLOG_POSTS.map((post, index) => (
         <motion.article 
           key={post.id}
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: index * 0.1 }}
           className="border-b border-border pb-8 last:border-0"
         >
