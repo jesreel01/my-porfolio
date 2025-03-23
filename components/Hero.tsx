@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="home" className="flex flex-col justify-center relative pb-14 lg:pb-18">
+    <section id="home" className="flex flex-col justify-center relative pt-4 pb-14 lg:pb-18 lg:pt-8">
       <div className="max-w-2xl">
         <motion.div
           ref={ref}
