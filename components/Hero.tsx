@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="home" className="flex flex-col justify-center relative pb-18">
+    <section id="home" className="flex flex-col justify-center relative pb-14 lg:pb-18">
       <div className="max-w-2xl">
         <motion.div
           ref={ref}
@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
             <span className="block text-primary/80">Full Stack Developer</span>
           </h1>
 
-          <div className="h-20 overflow-hidden font-mono text-lg text-muted-foreground mt-2 mb-8">
+          <div className="h-10 overflow-hidden font-mono text-lg text-muted-foreground mt-2 mb-8 sm:h-20">
             <p className="whitespace-nowrap">
               {typedText}
               <span className="cursor-line"></span>
