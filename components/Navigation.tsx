@@ -46,7 +46,7 @@ const Navigation: React.FC = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-40 py-3 bg-white shadow-sm transition-transform duration-300",
+        "top-0 left-0 right-0 z-40 py-3 bg-white transition-transform duration-300",
         !isVisible && "-translate-y-full"
       )}
     >
@@ -60,16 +60,18 @@ const Navigation: React.FC = () => {
 
           <ul className="flex items-center space-x-8">
             {[
-              { href: "/projects", label: "Projects" },
-              { href: "/blog", label: "Blog" },
-              { href: "/about", label: "About" },
+              { href: "/projects", label: "Projects", disabled: false },
+              { href: "/blog", label: "Blog", disabled: true },
+              { href: "/about", label: "About", disabled: false },
             ].map((item) => (
-              <li
-                key={item.href}
-              >
+              <li key={item.href}>
                 <Link
-                  href={item.href}
-                  className={cn("nav-link", isActive(item.href) && "text-primary")}
+                  href={item.disabled ? {} : item.href}
+                  className={cn(
+                    "nav-link",
+                    isActive(item.href) && "text-primary",
+                    item.disabled && "text-muted-foreground cursor-not-allowed opacity-50"
+                  )}
                 >
                   {item.label}
                 </Link>

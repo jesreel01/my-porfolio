@@ -3,6 +3,7 @@
 import React from "react";
 import { motion, useInView } from "framer-motion";
 import { ExternalLinkIcon, GithubIcon, CodeIcon } from "lucide-react";
+import ProjectCard from "@/components/ProjectCard";
 
 interface Project {
   id: number;
@@ -13,12 +14,6 @@ interface Project {
   codeUrl: string;
 }
 
-interface ProjectCardProps {
-  project: Project;
-  index: number;
-}
-
-// Using the same project data from Projects component
 const projects: Project[] = [
   {
     id: 1,
@@ -76,65 +71,9 @@ const projects: Project[] = [
   },
 ];
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-    >
-      <div className="project-card group">
-        <div className="flex flex-col md:flex-row md:items-start gap-6">
-          <div className="flex-grow">
-            <div className="flex items-center mb-3">
-              <CodeIcon className="h-5 w-5 mr-2 text-primary/70" />
-              <h3 className="text-xl font-bold">{project.title}</h3>
-            </div>
-            <p className="text-muted-foreground mb-4">{project.description}</p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs font-mono px-2 py-1 rounded-full bg-secondary text-secondary-foreground"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="flex items-center gap-3 md:self-end">
-            <a
-              href={project.demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full border border-border hover:border-primary/40 hover:bg-background transition-colors duration-200"
-              aria-label="View Demo"
-            >
-              <ExternalLinkIcon className="h-4 w-4" />
-            </a>
-            <a
-              href={project.codeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full border border-border hover:border-primary/40 hover:bg-background transition-colors duration-200"
-              aria-label="View Code"
-            >
-              <GithubIcon className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 const Projects = () => {
   return (
-    <div className="pt-24">
+    <div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -151,7 +90,22 @@ const Projects = () => {
 
       <div className="grid gap-8">
         {projects.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
+          <motion.div
+            key={project.id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <ProjectCard
+              key={project.id}
+              title={project.title}
+              description={project.description}
+              tags={project.tags}
+              demoUrl={project.demoUrl}
+              codeUrl={project.codeUrl}
+            />
+          </motion.div>
         ))}
       </div>
     </div>
