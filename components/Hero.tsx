@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowDownIcon } from "lucide-react";
+import { ArrowDownIcon, GithubIcon, LinkedinIcon, MailIcon, TwitterIcon } from "lucide-react";
 
 const Hero: React.FC = () => {
   const [typedText, setTypedText] = useState("");
@@ -25,7 +25,10 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="home" className="flex flex-col justify-center relative pt-4 pb-14 lg:pb-18 lg:pt-8">
+    <section
+      id="home"
+      className="flex flex-col justify-center relative pt-4 pb-14 lg:pb-18 lg:pt-3"
+    >
       <div className="max-w-2xl">
         <motion.div
           ref={ref}
@@ -40,14 +43,14 @@ const Hero: React.FC = () => {
             <span className="block text-primary/80">Full Stack Developer</span>
           </h1>
 
-          <div className="h-10 overflow-hidden font-mono text-lg text-muted-foreground mt-2 mb-8 sm:h-20">
+          <div className="h-10 overflow-hidden font-mono text-lg text-muted-foreground mt-2 mb-8 sm:h-10">
             <p className="whitespace-nowrap">
               {typedText}
               <span className="cursor-line"></span>
             </p>
           </div>
 
-          <motion.a
+          {/* <motion.a
             href="#projects"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -56,7 +59,36 @@ const Hero: React.FC = () => {
           >
             View my work
             <ArrowDownIcon className="ml-2 h-4 w-4" />
-          </motion.a>
+          </motion.a> */}
+          <div className="flex space-x-3.5">
+            <a
+              href="https://github.com/jesreel01"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full border border-border hover:border-primary/40 hover:bg-primary/5 transition-colors duration-200"
+              aria-label="GitHub"
+            >
+              <GithubIcon className="h-5 w-5" />
+            </a>
+            <a
+              href="https://linkedin.com/in/jesreel01"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full border border-border hover:border-primary/40 hover:bg-primary/5 transition-colors duration-200"
+              aria-label="LinkedIn"
+            >
+              <LinkedinIcon className="h-5 w-5" />
+            </a>
+            {/* <a
+              href=""
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full border border-border hover:border-primary/40 hover:bg-primary/5 transition-colors duration-200"
+              aria-label="Twitter"
+            >
+              <TwitterIcon className="h-5 w-5" />
+            </a> */}
+          </div>
         </motion.div>
       </div>
     </section>
