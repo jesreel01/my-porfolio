@@ -33,7 +33,7 @@ export default function RootLayout({
       <body className={`${inter.variable}  ${jetbrainsMono.variable} antialiased`}>
         <Cursor />
         <Navigation />
-        <main className="mx-auto max-w-3xl px-4 pt-8 pb-6 sm:px-6 lg:px-8 lg:pb-8 lg:pt-16">{children}</main>
+        <main className="mx-auto max-w-3xl p-4 pb-6 sm:px-6 lg:px-8 lg:pb-8 lg:pt-16">{children}</main>
 
         <footer className="py-4 border-t border-border">
           <div className="container-custom">

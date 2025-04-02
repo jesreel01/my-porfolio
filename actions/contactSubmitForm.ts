@@ -12,7 +12,7 @@ const schema = z.object({
 export type ContactFormData = z.infer<typeof schema>;
 
 export async function contactSubmitForm(
-  prevState: ActionType<ContactFormData> | null,
+  prevState: ActionType<ContactFormData>,
   formData: FormData
 ): Promise<ActionType<ContactFormData>> {
   const result = await schema.safeParseAsync(Object.fromEntries(formData));
@@ -29,13 +29,17 @@ export async function contactSubmitForm(
     };
   }
 
-  return {
-    ...prevState,
-    success: true,
-    data: {
-      name: "",
-      email: "",
-      message: "",
-    },
-  };
+  try {
+  } catch (error) {
+    
+    return {
+      ...prevState,
+      success: false,
+      error: "Failed to send message",
+      validationErrors: {},
+      data: Object.fromEntries(formData.entries()) as ContactFormData,
+    };
+  }
+
+  return null;
 }

@@ -4,7 +4,7 @@ import { SendIcon } from "lucide-react";
 import React, { FormEvent, useActionState } from "react";
 
 const ContactForm = () => {
-  const [state, action] = useActionState<ActionType<ContactFormData> | null, FormData>(
+  const [state, action] = useActionState<ActionType<ContactFormData>, FormData>(
     contactSubmitForm,
     null
   );
@@ -19,12 +19,16 @@ const ContactForm = () => {
         </label>
         <input
           defaultValue={state?.data?.name}
+          required
           type="text"
           id="name"
           name="name"
           placeholder="Your name"
-          className="w-full p-3 rounded-md border border-border bg-background focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors duration-200"
+          className="w-full p-2 rounded-md border border-border bg-background focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors duration-200"
         />
+        {state?.validationErrors?.name && (
+          <p className="text-red-500 text-sm mt-1">{state?.validationErrors?.name}</p>
+        )}
       </div>
 
       <div>
@@ -32,13 +36,17 @@ const ContactForm = () => {
           Email
         </label>
         <input
+          required
           defaultValue={state?.data?.email}
           id="email"
           type="email"
           name="email"
           placeholder="Your email"
-          className="w-full p-3 rounded-md border border-border bg-background focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors duration-200"
+          className="w-full p-2 rounded-md border border-border bg-background focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors duration-200"
         />
+        {state?.validationErrors?.email && (
+          <p className="text-red-500 text-sm mt-1">{state?.validationErrors?.email}</p>
+        )}
       </div>
 
       <div>
@@ -46,18 +54,22 @@ const ContactForm = () => {
           Message
         </label>
         <textarea
+          required
           defaultValue={state?.data?.message}
           id="message"
           name="message"
           rows={5}
           placeholder="Your message"
           className="w-full p-3 rounded-md border border-border bg-background focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors duration-200"
-        ></textarea>
+        />
+        {state?.validationErrors?.message && (
+          <p className="text-red-500 text-sm mt-1">{state?.validationErrors?.message}</p>
+        )}
       </div>
 
       <button
         type="submit"
-        className="inline-flex items-center justify-center w-full px-5 py-3 mt-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200 font-medium"
+        className="inline-flex items-center justify-center w-full px-5 py-2  mt-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200 font-medium"
       >
         Send Message
         <SendIcon className="ml-2 h-4 w-4" />
