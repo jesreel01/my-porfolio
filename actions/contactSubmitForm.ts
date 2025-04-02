@@ -2,6 +2,7 @@
 
 import z from "zod";
 import { ActionType } from "./types";
+import { sendMail } from "@/lib/mailer";
 
 const schema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -29,9 +30,11 @@ export async function contactSubmitForm(
     };
   }
 
+  const { name, email, message } = result.data;
   try {
+    await sendMail(name, email, message);
   } catch (error) {
-    
+    console.error("Error sending email:", error);
     return {
       ...prevState,
       success: false,
@@ -41,5 +44,7 @@ export async function contactSubmitForm(
     };
   }
 
-  return null;
+  return {
+    success: true,
+  };
 }

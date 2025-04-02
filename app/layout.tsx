@@ -3,6 +3,7 @@ import { Inter, Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Cursor from "@/components/Cusor";
 import Navigation from "@/components/Navigation";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,11 +30,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" >
+    <html lang="en">
       <body className={`${inter.variable}  ${jetbrainsMono.variable} antialiased`}>
         <Cursor />
         <Navigation />
-        <main className="mx-auto max-w-3xl p-4 pb-6 sm:px-6 lg:px-8 lg:pb-8 lg:pt-16">{children}</main>
+        <Toaster position="top-center" />
+        <main className="mx-auto max-w-3xl p-4 pb-6 sm:px-6 lg:px-8 lg:pb-8 lg:pt-16">
+          {children}
+        </main>
 
         <footer className="py-4 border-t border-border">
           <div className="container-custom">

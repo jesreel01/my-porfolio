@@ -1,15 +1,20 @@
 import { ContactFormData, contactSubmitForm } from "@/actions/contactSubmitForm";
 import { ActionType } from "@/actions/types";
 import { SendIcon } from "lucide-react";
-import React, { FormEvent, useActionState } from "react";
+import React, { FormEvent, useActionState, useEffect } from "react";
+import { toast } from "sonner";
 
 const ContactForm = () => {
-  const [state, action] = useActionState<ActionType<ContactFormData>, FormData>(
+  const [state, action, isPending] = useActionState<ActionType<ContactFormData>, FormData>(
     contactSubmitForm,
     null
   );
 
-  console.log(state);
+  useEffect(() => {
+    if (state?.success) {
+      toast.success("Email Sent!");
+    }
+  }, [state]);
 
   return (
     <form className="space-y-4" action={action}>
@@ -70,6 +75,7 @@ const ContactForm = () => {
       <button
         type="submit"
         className="inline-flex items-center justify-center w-full px-5 py-2  mt-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200 font-medium"
+        disabled={isPending}
       >
         Send Message
         <SendIcon className="ml-2 h-4 w-4" />
