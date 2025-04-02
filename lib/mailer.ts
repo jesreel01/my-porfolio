@@ -1,11 +1,10 @@
 import nodemailer from "nodemailer";
-import { secret } from "@aws-amplify/backend";
 
 export const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS || (secret("EMAIL_PASS") as unknown as string),
+    pass: process.env.EMAIL_PASS,
   },
 });
 
