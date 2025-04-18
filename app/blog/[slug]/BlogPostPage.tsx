@@ -1,8 +1,6 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getBlogPostBySlug, getSerializedMDX, getAllBlogPosts } from "@/lib/mdx";
-import { notFound } from "next/navigation";
+import { getBlogPostBySlug, getSerializedMDX, getAllBlogPosts, BlogPost } from "@/lib/mdx";
 import { CalendarIcon, ClockIcon } from "lucide-react";
-import BlogPostPage from "./BlogPostPage";
 
 const components = {
   h1: (props: any) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
@@ -27,36 +25,34 @@ const components = {
     ),
 };
 
-export async function generateStaticParams() {
-  const posts = await getAllBlogPosts();
+export default async function BlogPostPage({ post }: { post: BlogPost }) {
+  return (
+    <article>
+      <div className="mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">{post.title}</h1>
+        <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-6">
+          <div className="flex items-center">
+            <CalendarIcon className="h-4 w-4 mr-1" />
+            <span>{post.date}</span>
+          </div>
+          <div className="flex items-center">
+            <ClockIcon className="h-4 w-4 mr-1" />
+            <span>{post.readTime}</span>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-2 mb-8">
+          {post.tags.map((tag) => (
+            <span key={tag} className="text-xs px-2 py-1 bg-muted rounded-md">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
 
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
-
-async function getPost(slug: string) {
-  const post = await getBlogPostBySlug(slug);
-
-  if (!post) {
-    return null;
-  }
-
-  const mdxSource = await getSerializedMDX(post.content);
-
-  return {
-    ...post,
-    mdxSource,
-  };
-}
-
-export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const post = await getPost(slug);
-
-  if (!post) {
-    notFound();
-  }
-
-  return <BlogPostPage post={post} />;
+      {/* MDX content */}
+      <div className="prose prose-lg max-w-none">
+        <MDXRemote source={post.content} components={components} />
+      </div>
+    </article>
+  );
 }

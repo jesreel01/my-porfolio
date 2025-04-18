@@ -10,7 +10,7 @@ import { projects } from "@/data/project";
 
 const Projects = () => {
   return (
-    <div>
+    <div className="min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

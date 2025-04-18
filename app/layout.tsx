@@ -31,15 +31,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable}  ${jetbrainsMono.variable} antialiased`}>
+      <body
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased flex flex-col min-h-screen`}
+      >
         <Cursor />
         <Navigation />
         <Toaster position="top-center" />
-        <main className="mx-auto max-w-3xl p-4 pb-6 sm:px-6 lg:px-8 lg:pb-8 lg:pt-16">
+        <main className="flex-grow mx-auto max-w-3xl p-4 pb-6 sm:px-6 lg:px-8 lg:pb-8 lg:pt-16">
           {children}
         </main>
 
-        <footer className="py-4 border-t border-border">
+        <footer className="py-4 border-t border-border mt-auto">
           <div className="container-custom">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-muted-foreground text-sm">
