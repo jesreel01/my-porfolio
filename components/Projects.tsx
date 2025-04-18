@@ -5,45 +5,7 @@ import { motion } from "framer-motion";
 import { ExternalLinkIcon, GithubIcon, CodeIcon } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "./ui/card";
 import ProjectCard from "./ProjectCard";
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  tags: string[];
-  demoUrl: string;
-  codeUrl: string;
-}
-
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "E-commerce Platform",
-    description:
-      "A modern e-commerce platform built with React and Node.js, featuring product search, cart functionality, and secure checkout.",
-    tags: ["React", "Node.js", "MongoDB", "Stripe"],
-    demoUrl: "#",
-    codeUrl: "#",
-  },
-  {
-    id: 2,
-    title: "Portfolio Website",
-    description:
-      "A minimalist portfolio website with smooth animations and responsive design, showcasing my skills and projects.",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    demoUrl: "#",
-    codeUrl: "#",
-  },
-  {
-    id: 3,
-    title: "Weather Dashboard",
-    description:
-      "A clean and intuitive weather application that provides real-time weather data and forecasts for locations worldwide.",
-    tags: ["JavaScript", "OpenWeather API", "Chart.js", "CSS"],
-    demoUrl: "#",
-    codeUrl: "#",
-  },
-];
+import { projects } from "@/data/project";
 
 const Projects: React.FC = () => {
   return (

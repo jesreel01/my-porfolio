@@ -10,7 +10,13 @@ interface ProjectCardProps {
   codeUrl: string;
 }
 
-const ProjectCard : React.FC<ProjectCardProps> = ({ codeUrl, demoUrl, description, tags, title }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  codeUrl,
+  demoUrl,
+  description,
+  tags,
+  title,
+}) => {
   return (
     <Card className="project-card">
       <div className="flex flex-col md:flex-row md:items-start gap-6">
@@ -35,11 +41,14 @@ const ProjectCard : React.FC<ProjectCardProps> = ({ codeUrl, demoUrl, descriptio
         </div>
         <div className="flex items-center gap-3 md:self-end">
           <a
-            href={demoUrl}
+            href={demoUrl ?? undefined}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full border border-border hover:border-primary/40 hover:bg-background transition-colors duration-200"
+            className={`p-2 rounded-full border border-border hover:border-primary/40 hover:bg-background transition-colors duration-200 ${
+              !demoUrl ? "pointer-events-none opacity-50" : ""
+            }`}
             aria-label="View Demo"
+            aria-disabled={!demoUrl}
           >
             <ExternalLinkIcon className="h-4 w-4" />
           </a>
