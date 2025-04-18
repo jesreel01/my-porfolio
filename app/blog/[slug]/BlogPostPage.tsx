@@ -1,6 +1,8 @@
+import React from "react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getBlogPostBySlug, getSerializedMDX, getAllBlogPosts, BlogPost } from "@/lib/mdx";
 import { CalendarIcon, ClockIcon } from "lucide-react";
+import { CopyButton } from "@/components/CopyButton";
 
 const components = {
   h1: (props: any) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
@@ -14,9 +16,26 @@ const components = {
   blockquote: (props: any) => (
     <blockquote className="border-l-4 border-muted pl-4 italic my-4" {...props} />
   ),
-  pre: (props: any) => (
-    <pre className="bg-muted p-4 rounded-lg overflow-x-auto my-6 text-sm" {...props} />
-  ),
+  pre: ({ children, ...props }: { children: React.ReactNode } & React.HTMLAttributes<HTMLPreElement>) => {
+    let codeContent = '';
+    React.Children.forEach(children, (child) => {
+      if (React.isValidElement(child) && 'props' in child) {
+        const codeChild = child as { props: { children?: string } };
+        if (typeof codeChild.props.children === 'string') {
+          codeContent = codeChild.props.children;
+        }
+      }
+    });
+    
+    return (
+      <div className="relative">
+        <pre className="bg-muted p-4 rounded-lg overflow-x-auto my-6 text-sm" {...props}>
+          {children}
+        </pre>
+        <CopyButton text={codeContent} />
+      </div>
+    );
+  },
   code: (props: any) =>
     props.className ? (
       <code className={props.className + " px-1 py-0.5 bg-muted rounded text-sm"} {...props} />
