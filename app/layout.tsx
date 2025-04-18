@@ -37,7 +37,7 @@ export default function RootLayout({
         <Cursor />
         <Navigation />
         <Toaster position="top-center" />
-        <main className="flex-grow mx-auto max-w-3xl p-4 pb-6 sm:px-6 lg:px-8 lg:pb-8 lg:pt-16">
+        <main className="flex-grow mx-auto max-w-3xl w-full p-4 pb-6 sm:px-6 lg:px-8 lg:pb-8 lg:pt-16">
           {children}
         </main>
 
