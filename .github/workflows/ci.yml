@@ -21,19 +21,6 @@ jobs:
         with:
           node-version: '20'
           
-      - name: Cache dependencies and build outputs
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.npm
-            ${{ github.workspace }}/.next/cache
-            ${{ github.workspace }}/.sst
-            node_modules
-          key: ${{ runner.os }}-nextjs-sst-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-sst-${{ hashFiles('**/package-lock.json') }}-
-            ${{ runner.os }}-nextjs-sst-
-          
       - name: Install dependencies
         run: npm ci
         
