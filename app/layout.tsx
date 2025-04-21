@@ -20,8 +20,36 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jesreel",
-  description: "Personal portfolio and projects showcase",
+  title: "Jesreel | Software Engineer & Developer",
+  description: "Full-stack developer specializing in Next.js, React, and AWS. Portfolio showcasing professional projects, coding skills, and technical expertise.",
+  keywords: "software engineer, web developer, full-stack, Next.js, React, TypeScript, portfolio, hire developer",
+  authors: [{ name: "Jesreel John Miole" }],
+  creator: "Jesreel",
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://jesreel.me/',
+    title: 'Jesreel | Software Engineer & Developer',
+    description: 'Full-stack developer specializing in Next.js, React, and AWS. Portfolio showcasing professional projects, coding skills, and technical expertise.',
+    siteName: 'Jesreel Portfolio',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Jesreel | Software Engineer & Developer',
+    description: 'Full-stack developer specializing in Next.js, React, and AWS. Portfolio showcasing professional projects, coding skills, and technical expertise.',
+    creator: '@jesreel',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  alternates: {
+    canonical: 'https://jesreel.me/',
+  },
 };
 
 export default function RootLayout({

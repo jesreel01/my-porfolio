@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "next dev --turbopack",
+    "lint": "next lint",
+    "start": "next start"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
@@ -28,6 +28,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sonner": "^2.0.3",
+    "sst": "^3.13.14",
     "tailwind-merge": "^3.0.2",
     "zod": "^3.24.2"
   },
