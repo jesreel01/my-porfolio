@@ -21,6 +21,14 @@ jobs:
         with:
           node-version: '20'
           
+      - name: Cache dependencies and build outputs
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            .open-next/cache
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          
       - name: Install dependencies
         run: npm ci
         
@@ -34,3 +42,4 @@ jobs:
         run: npm run sst:deploy:prod
         env:
           CI: true
+          
