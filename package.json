@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next dev --turbopack",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "sst:deploy:prod": "sst deploy --stage production"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
