@@ -49,7 +49,7 @@ const Projects: React.FC = () => {
         className="mt-12 text-center"
       >
         <a
-          href="https://github.com"
+          href="https://github.com/jesreel01"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center font-mono text-sm text-primary hover:underline"
