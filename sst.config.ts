@@ -15,8 +15,6 @@ export default $config({
     };
   },
   async run() {
-    new sst.aws.Nextjs("MyWeb", {
-      domain: "jesreel.me",
-    });
+    new sst.aws.Nextjs("MyWeb");
   },
 });
