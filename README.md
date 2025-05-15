@@ -98,7 +98,7 @@ The blog uses MDX for content with frontmatter support. Blog posts are stored in
 ## 👤 Author
 
 - [Jesreel John Miole](https://jesreel.me)
-- GitHub: [@yourgithub](https://github.com/yourgithub)
+- GitHub: [@jesreel01](https://github.com/jesreel01)
 - LinkedIn: [Jesreel John Miole](https://linkedin.com/in/yourlinkedin)
 
 ## 🙏 Acknowledgments
