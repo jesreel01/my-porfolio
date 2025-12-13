@@ -15,6 +15,7 @@ export type BlogPost = {
   readTime: string;
   tags: string[];
   content: string;
+  featured?: boolean;
 };
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
@@ -32,6 +33,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       readTime: data.readTime,
       tags: data.tags || [],
       content,
+      featured: data.featured || false,
     };
   } catch (error) {
     console.error(`Error getting blog post ${slug}:`, error);
@@ -68,6 +70,7 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
           readTime: data.readTime,
           tags: data.tags || [],
           content,
+          featured: data.featured || false,
         };
       })
       // Sort posts by date
@@ -87,4 +90,14 @@ export async function getSerializedMDX(source: string) {
   });
   
   return mdxSource;
+}
+
+export async function getFeaturedBlogPosts(): Promise<BlogPost[]> {
+  try {
+    const allPosts = await getAllBlogPosts();
+    return allPosts.filter(post => post.featured);
+  } catch (error) {
+    console.error('Error getting featured blog posts:', error);
+    return [];
+  }
 }
