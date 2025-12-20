@@ -18,15 +18,15 @@ export function CopyButton({ text }: CopyButtonProps) {
 
   return (
     <button
-      className="absolute right-4 top-2 p-2 rounded-md bg-background/30 hover:bg-background/50 transition-colors active:scale-95 cursor-pointer"
+      className="p-1.5 rounded-md hover:text-zinc-300 transition-colors active:scale-95 cursor-pointer"
       onClick={copy}
+      aria-label="Copy code"
     >
       {isCopied ? (
-        <Check className="h-5 w-5 text-green-500" />
+        <Check className="h-4 w-4 text-green-400" />
       ) : (
-        <Copy className="h-5 w-5 text-muted-foreground" />
+        <Copy className="h-4 w-4 text-zinc-400" />
       )}
-      <span className="sr-only">Copy code</span>
     </button>
   );
 }
