@@ -59,6 +59,15 @@ export default async function BlogPostPage({ post }: { post: BlogPost }) {
 
   return (
     <article>
+      {post.coverImage && (
+        <div className="mb-8 rounded-xl overflow-hidden aspect-video relative">
+          <img
+            src={post.coverImage}
+            alt={post.title}
+            className="object-cover w-full h-full"
+          />
+        </div>
+      )}
       <div className="mb-8">
         <h1 className="text-3xl md:text-4xl font-bold mb-4">{post.title}</h1>
         <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-6">
