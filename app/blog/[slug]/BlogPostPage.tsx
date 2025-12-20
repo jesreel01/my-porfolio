@@ -78,6 +78,16 @@ export default async function BlogPostPage({ post }: { post: BlogPost }) {
             </span>
           ))}
         </div>
+
+        {post.coverImage && (
+          <div className="mb-8 rounded-xl overflow-hidden aspect-video relative">
+            <img
+              src={post.coverImage}
+              alt={post.title}
+              className="object-cover w-full h-full"
+            />
+          </div>
+        )}
       </div>
 
       <div className="prose prose-lg max-w-none dark:prose-invert">

@@ -16,6 +16,7 @@ export type BlogPost = {
   tags: string[];
   content: string;
   featured?: boolean;
+  coverImage?: string;
 };
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
@@ -23,7 +24,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     const filePath = path.join(blogDirectory, `${slug}.mdx`);
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(fileContents);
-    
+
     return {
       slug,
       title: data.title,
@@ -34,6 +35,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       tags: data.tags || [],
       content,
       featured: data.featured || false,
+      coverImage: data.coverImage || null,
     };
   } catch (error) {
     console.error(`Error getting blog post ${slug}:`, error);
@@ -46,21 +48,21 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
     if (!fs.existsSync(blogDirectory)) {
       return [];
     }
-    
+
     const fileNames = fs.readdirSync(blogDirectory);
     const allPostsData = fileNames
       .filter(fileName => fileName.endsWith('.mdx'))
       .map(fileName => {
         // Remove ".mdx" from file name to get slug
         const slug = fileName.replace(/\.mdx$/, '');
-        
+
         // Read file content
         const fullPath = path.join(blogDirectory, fileName);
         const fileContents = fs.readFileSync(fullPath, 'utf8');
-        
+
         // Use gray-matter to parse the post metadata
         const { data, content } = matter(fileContents);
-        
+
         return {
           slug,
           title: data.title,
@@ -71,11 +73,12 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
           tags: data.tags || [],
           content,
           featured: data.featured || false,
+          coverImage: data.coverImage || null,
         };
       })
       // Sort posts by date
       .sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()));
-    
+
     return allPostsData;
   } catch (error) {
     console.error('Error getting all blog posts:', error);
@@ -88,7 +91,7 @@ export async function getSerializedMDX(source: string) {
     // Add options for MDX parsing if needed
     parseFrontmatter: true,
   });
-  
+
   return mdxSource;
 }
 
