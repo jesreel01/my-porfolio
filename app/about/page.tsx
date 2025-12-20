@@ -29,27 +29,19 @@ const About = () => {
             className="md:col-span-3"
           >
             <p className="text-muted-foreground mb-4">
-              I'm a passionate Full-Stack developer focused on building scalable, high-performance
-              applications. With experience ranging from small applications to large-scale systems,
-              I've developed strong expertise in both front-end and back-end development. I'm
-              particularly interested in microservices, event-driven architecture, and serverless
-              solutions, always looking to incorporate these approaches into my work.
+              I'm Jesreel, a backend-focused Full Stack Developer with a passion for creating efficient
+              and scalable web applications. I combine a strong foundation in both frontend and backend
+              technologies to build solutions.
             </p>
 
-            <p className="text-muted-foreground mb-4">
-              I strive to write clean, maintainable code following industry best practices. My
-              technical approach is informed by extensive reading on architecture, design patterns,
-              and implementation strategies. Recently, I've been exploring data-driven application
-              development to expand my skillset.
+            <p className="text-muted-foreground mb-10">
+              I help businesses translate their ideas into reality by building the solutions they need.
+              My focus areas include automation, API integration, architecture, and custom solutions
+              tailored to unique business challenges.
             </p>
 
-            <p className="text-muted-foreground">
-              When I'm not coding, you’ll find me exploring new technologies reading tech articles,
-              books, or watching educational videos on YouTube to stay up to date with the latest
-              trends.
-            </p>
 
-            <div className="mt-8 grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col">
                 <h3 className="text-lg font-semibold mb-3 flex items-center">
                   <CodeIcon className="h-5 w-5 mr-2 text-primary/70" />

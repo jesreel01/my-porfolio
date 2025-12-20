@@ -9,7 +9,7 @@ import { projects } from "@/data/project";
 
 const Projects: React.FC<{className?: string}> = ({className}) => {
   return (
-    <section id="projects" className={`bg-secondary/30 mb-8 ${className || ''}`}>
+    <section id="projects" className={`mb-4 lg:mb-6 ${className || ''}`}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

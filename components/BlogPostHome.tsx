@@ -19,7 +19,7 @@ interface BlogPostHomeProps {
 
 const BlogPostHome: React.FC<BlogPostHomeProps> = ({ posts }) => {
   return (
-    <section id="blog" className="bg-secondary/30 mb-8">
+    <section id="blog" className="mb-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

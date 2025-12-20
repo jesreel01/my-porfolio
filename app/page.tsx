@@ -11,7 +11,7 @@ export default async function Home() {
   return (
     <div className="min-h-screen relative overflow-hidden">
       <Hero/>
-      <Projects className="mb-20" />
+      <Projects className="mb-12 lg:mb-16" />
       <BlogPostHome posts={featuredPosts}/>
    </div>
   );
