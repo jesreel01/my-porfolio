@@ -2,51 +2,47 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ExternalLinkIcon, GithubIcon, CodeIcon } from "lucide-react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "./ui/card";
+import { ExternalLinkIcon } from "lucide-react";
 import ProjectCard from "./ProjectCard";
 import { projects } from "@/data/project";
 
-const Projects: React.FC<{className?: string}> = ({className}) => {
+const Projects: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <section id="projects" className={`bg-secondary/30 mb-8 ${className || ''}`}>
+    <section id="projects" className={`mb-8 ${className || ''}`}>
+      {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.4 }}
         className="mb-6"
       >
-        <span className="text-primary/70 font-mono text-sm">Featured Work</span>
-        <h2 className="text-3xl md:text-4xl font-bold mt-2">Projects</h2>
+        <span className="text-muted-foreground font-mono text-sm">
+          Featured Work
+        </span>
+        <div className="flex items-baseline justify-between mt-1">
+          <h2 className="text-2xl font-semibold">Projects</h2>
+          <a
+            href="https://github.com/jesreel01"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground underline decoration-dotted underline-offset-4"
+          >
+            More projects on GitHub
+            <ExternalLinkIcon className="ml-1 h-3 w-3" />
+          </a>
+        </div>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-right mb-6"
-      >
-        <a
-          href="https://github.com/jesreel01"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center font-mono text-sm text-primary hover:underline"
-        >
-          More projects on GitHub
-          <ExternalLinkIcon className="ml-1 h-3 w-3" />
-        </a>
-      </motion.div>
-      
-      <div className="grid gap-8">
+      {/* Projects List */}
+      <div>
         {projects.map((project, index) => (
           <motion.div
             key={project.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
           >
             <ProjectCard
               title={project.title}
@@ -54,6 +50,7 @@ const Projects: React.FC<{className?: string}> = ({className}) => {
               tags={project.tags}
               demoUrl={project.demoUrl}
               codeUrl={project.codeUrl}
+              index={index}
             />
           </motion.div>
         ))}
