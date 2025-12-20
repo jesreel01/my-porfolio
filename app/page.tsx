@@ -7,12 +7,12 @@ import Image from "next/image";
 
 export default async function Home() {
   const featuredPosts = await getFeaturedBlogPosts();
-  
+
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <Hero/>
+      <Hero />
       <Projects className="mb-12 lg:mb-16" />
-      <BlogPostHome posts={featuredPosts}/>
-   </div>
+      <BlogPostHome posts={featuredPosts} />
+    </div>
   );
 }

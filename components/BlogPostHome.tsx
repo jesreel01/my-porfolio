@@ -78,7 +78,7 @@ const BlogPostHome: React.FC<BlogPostHomeProps> = ({ posts }) => {
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs font-mono text-muted-foreground"
+                    className="text-xs font-mono px-2 py-1 rounded-full bg-secondary text-secondary-foreground"
                   >
                     {tag}
                   </span>
