@@ -7,6 +7,22 @@ import rehypePrettyCode from "rehype-pretty-code";
 import { rehypePreRaw } from "@/lib/rehype-pre-raw";
 import PostNavigation from "@/components/NextToRead";
 
+function extractTextFromChildren(children: any): string {
+  if (typeof children === 'string') {
+    return children;
+  }
+  
+  if (Array.isArray(children)) {
+    return children.map(extractTextFromChildren).join('');
+  }
+  
+  if (children?.props?.children) {
+    return extractTextFromChildren(children.props.children);
+  }
+  
+  return '';
+}
+
 const components = {
   h1: (props: any) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
   h2: (props: any) => <h2 className="text-2xl font-bold mt-6 mb-3" {...props} />,
@@ -19,9 +35,10 @@ const components = {
   blockquote: (props: any) => (
     <blockquote className="border-l-4 border-muted pl-4 italic my-4" {...props} />
   ),
-  pre: ({ children, raw, ...props }: any) => {
+  pre: ({ children, ...props }: any) => {
     const language = props['data-language'];
-    const codeText = raw || '';
+    const rawText = extractTextFromChildren(children);
+    
     return (
       <div className="relative rounded-xl overflow-hidden my-6 border border-zinc-700/50">
         <div className="flex items-center gap-2 px-4 py-3 bg-[#1a1a2e] border-b border-zinc-700/30">
@@ -31,11 +48,11 @@ const components = {
           <div className="flex-1" />
           <div className="flex items-center gap-1">
             {language && (
-              <span className="text-xs font-mono text-zinc-400 select-none uppercase">
-                {language}
+              <span className="text-xs font-mono text-zinc-400 select-none capitalize">
+                {language.toLowerCase()}
               </span>
             )}
-            <CopyButton text={codeText} />
+            <CopyButton text={rawText} />
           </div>
         </div>
         <pre className="p-6 overflow-x-auto text-sm" {...props}>
