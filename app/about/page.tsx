@@ -2,7 +2,12 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { CodeIcon, GraduationCapIcon, BriefcaseIcon, HeartIcon } from "lucide-react";
+import {
+  CodeIcon,
+  GraduationCapIcon,
+  BriefcaseIcon,
+  HeartIcon,
+} from "lucide-react";
 import Navigation from "@/components/Navigation";
 import { ArrowUpIcon } from "lucide-react";
 import Contact from "@/components/Contact";
@@ -17,7 +22,9 @@ const About = () => {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <span className="text-primary/70 font-mono text-sm">Get to know me</span>
+          <span className="text-primary/70 font-mono text-sm">
+            Get to know me
+          </span>
           <h2 className="text-3xl md:text-4xl font-bold mt-2">About Me</h2>
         </motion.div>
 
@@ -29,17 +36,18 @@ const About = () => {
             className="md:col-span-3"
           >
             <p className="text-muted-foreground mb-4">
-              I'm Jesreel, a backend-focused Full Stack Developer with a passion for creating efficient
-              and scalable web applications. I combine a strong foundation in both frontend and backend
-              technologies to build solutions.
+              I'm Jesreel, a backend-focused Full Stack Developer with a passion
+              for creating efficient and scalable web applications. I combine a
+              strong foundation in both frontend and backend technologies to
+              build solutions.
             </p>
 
             <p className="text-muted-foreground mb-10">
-              I help businesses translate their ideas into reality by building the solutions they need.
-              My focus areas include automation, API integration, architecture, and custom solutions
-              tailored to unique business challenges.
+              I help businesses translate their ideas into reality by building
+              the solutions they need. My focus areas include automation, API
+              integration, architecture, and custom solutions tailored to unique
+              business challenges.
             </p>
-
 
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col">
@@ -83,21 +91,41 @@ const About = () => {
 
             <div className="space-y-5">
               <div className="border-l-2 border-muted pl-4 pb-5">
-                <span className="text-xs font-mono text-muted-foreground">Jul 2022 - 2025</span>
-                <h4 className="text-base font-semibold mt-1">Full-stack Developer</h4>
+                <span className="text-xs font-mono text-muted-foreground">
+                  Jul 2022 - 2025 · Full-time
+                </span>
+                <h4 className="text-base font-semibold mt-1">
+                  Full-stack Developer
+                </h4>
                 <p className="text-sm text-muted-foreground">N-LITE</p>
               </div>
 
               <div className="border-l-2 border-muted pl-4 pb-5">
                 <span className="text-xs font-mono text-muted-foreground">
-                  Jun 2021 - Jul 2022{" "}
+                  Jul 2022 - 2025 · Contract
                 </span>
-                <h4 className="text-base font-semibold mt-1">React Developer Developer</h4>
-                <p className="text-sm text-muted-foreground">Boxtypd Technologies</p>
+                <h4 className="text-base font-semibold mt-1">
+                  Full-stack Developer
+                </h4>
+                <p className="text-sm text-muted-foreground">PsydeIO</p>
               </div>
 
               <div className="border-l-2 border-muted pl-4 pb-5">
-                <span className="text-xs font-mono text-muted-foreground">Jun 2021 - Aug 2021</span>
+                <span className="text-xs font-mono text-muted-foreground">
+                  Jun 2021 - Jul 2022 · Full-time
+                </span>
+                <h4 className="text-base font-semibold mt-1">
+                  React Developer
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Boxtypd Technologies
+                </p>
+              </div>
+
+              <div className="border-l-2 border-muted pl-4 pb-5">
+                <span className="text-xs font-mono text-muted-foreground">
+                  Jun 2021 - Aug 2021 · Intern
+                </span>
                 <h4 className="text-base font-semibold mt-1">OJT / QA</h4>
                 <p className="text-sm text-muted-foreground">Zzagl</p>
               </div>
