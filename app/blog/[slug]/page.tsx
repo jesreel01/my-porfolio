@@ -1,5 +1,5 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getBlogPostBySlug, getSerializedMDX, getAllBlogPosts } from "@/lib/mdx";
+import { getBlogPostBySlug, getSerializedMDX, getAllBlogPosts, getAdjacentPosts } from "@/lib/mdx";
 import { notFound } from "next/navigation";
 import { CalendarIcon, ClockIcon } from "lucide-react";
 import BlogPostPage from "./BlogPostPage";
@@ -90,5 +90,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     notFound();
   }
 
-  return <BlogPostPage post={post} />;
+  const adjacentPosts = await getAdjacentPosts(slug);
+
+  return <BlogPostPage post={post} adjacentPosts={adjacentPosts} />;
 }

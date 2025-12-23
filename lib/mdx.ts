@@ -104,3 +104,22 @@ export async function getFeaturedBlogPosts(): Promise<BlogPost[]> {
     return [];
   }
 }
+
+export async function getAdjacentPosts(currentSlug: string): Promise<{ prev: BlogPost | null; next: BlogPost | null }> {
+  try {
+    const allPosts = await getAllBlogPosts();
+    const currentIndex = allPosts.findIndex(post => post.slug === currentSlug);
+    
+    if (currentIndex === -1) {
+      return { prev: null, next: null };
+    }
+
+    const prev = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+    const next = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+
+    return { prev, next };
+  } catch (error) {
+    console.error('Error getting adjacent posts:', error);
+    return { prev: null, next: null };
+  }
+}

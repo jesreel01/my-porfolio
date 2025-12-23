@@ -7,7 +7,6 @@ import {
   ClockIcon,
   ArrowRightIcon,
   ExternalLinkIcon,
-  BookOpenIcon,
 } from "lucide-react";
 import Link from "next/link";
 import type { BlogPost } from "@/lib/mdx";
@@ -55,18 +54,14 @@ const BlogPostHome: React.FC<BlogPostHomeProps> = ({ posts }) => {
               transition={{ duration: 0.4, delay: index * 0.05 }}
               className="py-6 border-b border-border/40 last:border-b-0"
             >
-              {/* Title with icon */}
-              <div className="flex items-start gap-3 mb-2">
-                <BookOpenIcon className="h-5 w-5 text-muted-foreground flex-shrink-0 mt-0.5" />
-                <h3 className="text-lg font-medium">
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="hover:underline underline-offset-4"
-                  >
-                    {post.title}
-                  </Link>
-                </h3>
-              </div>
+              <h3 className="text-lg font-medium mb-2">
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="hover:underline underline-offset-4"
+                >
+                  {post.title}
+                </Link>
+              </h3>
 
               {/* Description */}
               <p className="text-muted-foreground text-sm leading-relaxed mb-3">
@@ -99,10 +94,10 @@ const BlogPostHome: React.FC<BlogPostHomeProps> = ({ posts }) => {
                 </div>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
+                  className="group inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
                 >
                   Read more
-                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                  <ArrowRightIcon className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </motion.article>

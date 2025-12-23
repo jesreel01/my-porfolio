@@ -59,9 +59,9 @@ const BlogPosts: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
 
             <Link
               href={`/blog/${post.slug}`}
-              className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200"
+              className="group inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200"
             >
-              Read more <ArrowRightIcon className="ml-1 h-4 w-4" />
+              Read more <ArrowRightIcon className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.article>
         ))

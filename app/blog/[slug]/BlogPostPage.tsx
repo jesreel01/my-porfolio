@@ -5,6 +5,7 @@ import { CalendarIcon, ClockIcon } from "lucide-react";
 import { CopyButton } from "@/components/CopyButton";
 import rehypePrettyCode from "rehype-pretty-code";
 import { rehypePreRaw } from "@/lib/rehype-pre-raw";
+import PostNavigation from "@/components/NextToRead";
 
 const components = {
   h1: (props: any) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
@@ -52,7 +53,12 @@ const components = {
   },
 };
 
-export default async function BlogPostPage({ post }: { post: BlogPost }) {
+interface BlogPostPageProps {
+  post: BlogPost;
+  adjacentPosts: { prev: BlogPost | null; next: BlogPost | null };
+}
+
+export default async function BlogPostPage({ post, adjacentPosts }: BlogPostPageProps) {
   if (!post) {
     return <div>Post not found</div>;
   }
@@ -107,6 +113,8 @@ export default async function BlogPostPage({ post }: { post: BlogPost }) {
           }}
         />
       </div>
+
+      <PostNavigation prev={adjacentPosts.prev} next={adjacentPosts.next} />
     </article>
   );
 }
