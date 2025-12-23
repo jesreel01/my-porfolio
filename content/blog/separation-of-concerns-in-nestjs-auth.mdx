@@ -1,0 +1,72 @@
+---
+title: "Separation of Concerns in NestJS Authentication"
+date: "2025-12-23"
+excerpt: "A technical overview of separating presentation and infrastructure concerns in NestJS authentication modules."
+author: "Jesreel John Miole"
+readTime: "6 min read"
+tags: ["NestJS", "Architecture", "Authentication", "TypeScript"]
+featured: true
+coverImage: "https://res.cloudinary.com/dkkpnfp7u/image/upload/v1766497309/layered-auth_qtpiii.jpg"
+---
+
+# Separation of Concerns in NestJS Authentication
+
+Separation of concerns is a fundamental principle in well-architected NestJS applications. A robust authentication module enforces a strict boundary between the **Presentation Layer** and the **Infrastructure Layer**.
+
+This document outlines the responsibilities of each layer and their interaction within the authentication system.
+
+## 1. Presentation Layer
+
+The Presentation Layer defines the API contract. It comprises the `AuthController` and custom decorators.
+
+### Controllers
+
+The `AuthController` receives incoming requests and delegates business logic to the application layer. Controllers remain thin to ensure maintainability and clarity.
+
+### Decorators
+
+A custom `@Auth()` decorator abstracts route protection. This pattern encapsulates infrastructure configuration behind a declarative API.
+
+```typescript
+@Get('me')
+@Auth()
+getProfile(@Req() req) {
+  return req.user;
+}
+```
+
+## 2. Infrastructure Layer
+
+The Infrastructure Layer implements technical protocols. It determines _how_ authentication is verified.
+
+### Passport Strategies
+
+Authentication strategies are implemented as infrastructure adapters:
+
+- **JWT Strategy**: Extracts and validates Bearer tokens from request headers.
+- **Cookie Strategy**: Extracts and validates session identifiers from HTTP cookies.
+
+These implementations remain isolated from application and domain logic.
+
+### DynamicAuthGuard
+
+The `DynamicAuthGuard` selects the appropriate authentication protocol based on request metadata.
+
+```typescript
+const authType = request.headers["x-platform"] === "mobile" ? "jwt" : "cookie";
+const GeneratedGuard = AuthGuard(authType);
+```
+
+This design supports multiple platforms (Web, Mobile, Desktop) without modifications to controller or domain code.
+
+## 3. Benefits
+
+Separating Presentation from Infrastructure provides the following advantages:
+
+1. **Protocol Agnosticism**: Authentication mechanisms can be replaced by substituting infrastructure strategies. Controllers remain unchanged.
+2. **Testability**: Presentation logic and infrastructure logic can be unit tested independently.
+3. **Consistency**: The Presentation Layer receives a uniform `user` object regardless of the underlying authentication mechanism.
+
+## Conclusion
+
+This authentication module demonstrates effective layer separation. Infrastructure handles protocol-specific complexity while Presentation focuses on API design. This architecture yields maintainable, testable, and extensible code.
