@@ -45,7 +45,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
-  const ogImages = post.coverImage ? [post.coverImage] : [];
+  const ogImages = post.coverImage 
+    ? [post.coverImage] 
+    : [`/blog/${slug}/opengraph-image`];
 
   return {
     title: post.title,
@@ -92,5 +94,29 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   const adjacentPosts = await getAdjacentPosts(slug);
 
-  return <BlogPostPage post={post} adjacentPosts={adjacentPosts} />;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    datePublished: post.date,
+    dateModified: post.date,
+    description: post.excerpt,
+    image: post.coverImage ? [`https://jesreel.me${post.coverImage}`] : [`https://jesreel.me/blog/${slug}/opengraph-image`],
+    url: `https://jesreel.me/blog/${slug}`,
+    author: {
+      '@type': 'Person',
+      name: 'Jesreel John Miole',
+      url: 'https://jesreel.me',
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <BlogPostPage post={post} adjacentPosts={adjacentPosts} />
+    </>
+  );
 }

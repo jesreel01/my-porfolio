@@ -1,0 +1,20 @@
+<svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="100" rx="20" fill="white" />
+  <path
+    d="M12 30L32 50L12 70"
+    stroke="black"
+    stroke-width="8"
+    stroke-linecap="square"
+    stroke-linejoin="miter"
+  />
+  <rect x="42" y="62" width="20" height="8" fill="black" />
+  <rect
+    x="72"
+    y="30"
+    width="15"
+    height="40"
+    stroke="black"
+    stroke-width="6"
+    fill="none"
+  />
+</svg>

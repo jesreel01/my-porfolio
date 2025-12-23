@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Logo from "@/components/Logo";
 
 const Navigation: React.FC = () => {
   const pathname = usePathname();
@@ -22,8 +23,8 @@ const Navigation: React.FC = () => {
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between">
           <div className="font-mono text-lg font-medium">
-            <Link href="/" className="hover:text-primary transition-colors duration-200">
-              <span className="text-primary">&gt;</span> Jesreel
+            <Link href="/" className="flex items-center gap-2 hover:text-primary transition-colors duration-200 group">
+              <Logo className="h-5 w-auto text-foreground group-hover:text-primary transition-colors" />
             </Link>
           </div>
 

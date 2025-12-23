@@ -20,7 +20,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jesreel | Software Engineer & Developer",
+  metadataBase: new URL('https://jesreel.me'),
+  title: {
+    default: "Jesreel | Software Engineer & Developer",
+    template: "%s | Jesreel"
+  },
   description: "Full-stack developer specializing in Next.js, React, and AWS. Portfolio showcasing professional projects, coding skills, and technical expertise.",
   keywords: "software engineer, web developer, full-stack, Next.js, React, TypeScript, portfolio, hire developer",
   authors: [{ name: "Jesreel John Miole" }],
