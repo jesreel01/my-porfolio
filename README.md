@@ -95,6 +95,10 @@ my-porfolio/
 
 The blog uses MDX for content with frontmatter support. Blog posts are stored in the `content/blog` directory.
 
+## 🤝 Contributing
+
+Commit, branch, and PR conventions are in [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## 👤 Author
 
 - [Jesreel John Miole](https://jesreel.me)
